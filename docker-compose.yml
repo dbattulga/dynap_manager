@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  pipeline-registry:
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - ./jars:/jars
+      - ./conf:/conf
+    ports:
+      - 5001:80
