@@ -1,0 +1,22 @@
+---
+jobs:
+
+  - pipeline_name: first_pipe
+    job_name: A_job
+    agent_address: http://192.168.2.147
+    source_broker: http://192.168.2.147
+    sink_broker: http://192.168.2.147
+    source_topic: T-1
+    sink_topic: T-2
+    entry_class: flinkpackage.OperatorStreamOne
+    job_path: ../jars/elvish.jpg
+
+  - pipeline_name: first_pipe
+    job_name: B_job
+    agent_address: http://192.168.2.147
+    source_broker: http://192.168.2.147
+    sink_broker: http://192.168.2.147
+    source_topic: T-1
+    sink_topic: T-2
+    entry_class: flinkpackage.OperatorStreamOne
+    job_path: ../jars/elvish.jpg
