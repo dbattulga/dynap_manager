@@ -28,6 +28,7 @@ def run_conf():
             ('jar', ('test.jar', open(userjob['job_path'], 'rb'), 'application/octet')),
             ('data', ('data', json.dumps(body), 'application/json')),
         ]
+        
         req = requests.post(url + ":5001/upload", files=files)
         print(req)
 
