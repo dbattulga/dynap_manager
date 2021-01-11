@@ -2,21 +2,21 @@
 jobs:
 
   - pipeline_name: first_pipe
-    job_name: B_job
+    job_name: A_job
     agent_address: http://10.188.166.99
     source_broker: tcp://10.188.166.99
     sink_broker: tcp://10.188.166.99
     source_topic: T-1
     sink_topic: T-2
-    entry_class: flinkpackage.OperatorStreamOne
+    entry_class: flinkpackage.OperatorStreamTwo
     job_path: ../jars/flinktest-1.jar
 
   # - pipeline_name: first_pipe
   #   job_name: B_job
-  #   agent_address: http://192.168.2.147
-  #   source_broker: http://192.168.2.147
-  #   sink_broker: http://192.168.2.147
+  #   agent_address: http://10.188.150.130
+  #   source_broker: tcp://10.188.150.130
+  #   sink_broker: tcp://10.188.150.130
   #   source_topic: T-1
   #   sink_topic: T-2
   #   entry_class: flinkpackage.OperatorStreamOne
-  #   job_path: ../jars/elvish.jpg
+  #   job_path: ../jars/flinktest-1.jar
