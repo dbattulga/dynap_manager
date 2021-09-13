@@ -32,4 +32,7 @@ def run_conf():
         print(req)
 
 
+n1=dt.datetime.now()
 run_conf()
+n2=dt.datetime.now()
+print(n2-n1)

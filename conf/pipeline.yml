@@ -1,22 +1,22 @@
 ---
 jobs:
 
-  - pipeline_name: first_pipe
-    job_name: A_job
-    agent_address: http://10.188.166.99
-    source_broker: tcp://10.188.166.99
-    sink_broker: tcp://10.188.166.99
-    source_topic: T-1
-    sink_topic: T-2
-    entry_class: flinkpackage.OperatorStreamTwo
+  - job_name: A_job
+    pipeline_name: first_pipe
+    agent_address: http://192.168.2.136
+    source_broker: [tcp://192.168.2.136:1883, tcp://192.168.2.136:1883, tcp://192.168.2.136:1883]
+    source_topic: [T-1, T-2, T-3] # NUMBER OF INPUT TOPICS MUST BE EQUAL TO NUMBER OF INPUT MQTT ADDRESSES
+    sink_broker: tcp://192.168.2.136:1883
+    sink_topic: [T-3, T-4]
+    entry_class: flinkpackage.MultiSourceTest
     job_path: ../jars/flinktest-1.jar
 
-  # - pipeline_name: first_pipe
-  #   job_name: B_job
-  #   agent_address: http://10.188.150.130
-  #   source_broker: tcp://10.188.150.130
-  #   sink_broker: tcp://10.188.150.130
-  #   source_topic: T-1
-  #   sink_topic: T-2
-  #   entry_class: flinkpackage.OperatorStreamOne
+  # - job_name: B_job
+  #   pipeline_name: first_pipe
+  #   agent_address: http://192.168.2.136
+  #   source_broker: [tcp://192.168.2.136:1883, tcp://192.168.2.136:1883, tcp://192.168.2.136:1883]
+  #   source_topic: [T-1, T-2, T3] # NUMBER OF INPUT TOPICS MUST BE EQUAL TO NUMBER OF INPUT MQTT ADDRESSES
+  #   sink_broker: tcp://192.168.2.136:1883
+  #   sink_topic: [T-3, T-4]
+  #   entry_class: flinkpackage.MultiSourceTest
   #   job_path: ../jars/flinktest-1.jar
