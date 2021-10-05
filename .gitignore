@@ -7,9 +7,12 @@ __pycache__/
 *.so
 
 #vscode
-.vscode
+.vscode/
 
 # jars
+
+#pycharm
+.idea/
 
 
 # Distribution / packaging

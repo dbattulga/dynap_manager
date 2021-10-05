@@ -78,7 +78,7 @@ def draw_graph():
 
 
 def test_job():
-    with open(os.path.dirname(app.root_path) + '/conf/iplist.txt', 'r') as iplist:
+    with open(os.path.dirname(app.root_path) + '/config/iplist.txt', 'r') as iplist:
         lines = iplist.readlines()
     
     for line in lines:

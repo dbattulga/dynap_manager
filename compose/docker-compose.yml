@@ -6,6 +6,6 @@ services:
     volumes:
       - .:/usr/src/app
       - ./jars:/jars
-      - ./conf:/conf
+      - ./config:/config
     ports:
       - 5002:80
