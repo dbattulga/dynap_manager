@@ -5,7 +5,7 @@ import datetime as dt
 
 
 def run_conf():
-    with open('../conf/pipeline.yml') as f:
+    with open('config/pipeline.yml') as f:
         userconf = yaml.load(f)
     userjobs = []
     for userjob in userconf['jobs']:
