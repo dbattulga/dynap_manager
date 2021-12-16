@@ -4,9 +4,7 @@ import random
 import time
 
 
-
-mqttph = MqttPublishHandler('192.168.2.136', 'data-generator', 'test', 'test') #host, client id, username & password
-#mqttph = MqttPublishHandler('192.168.2.147', 'data-generator', 'test', 'test') #host, client id, username & password
+mqttph = MqttPublishHandler('192.168.1.8', 'data-generator', 'test', 'test')
 mqttph.connect()
 
 number = 0
@@ -14,7 +12,7 @@ number = 0
 while True:
     mqttph.publish("T-1", number)
     print (number)
-    time.sleep(0.1) # sleep for seconds
+    time.sleep(1) # sleep for seconds
     number += 1
 
 mqttph.disconnect()

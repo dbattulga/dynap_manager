@@ -85,11 +85,11 @@ class MqttHandler(object):
 
 class MqttPublishHandler(MqttHandler):
 
-    def publish(self, topic: str, payload: str, qos: int = 1, retain: bool = False) -> None:
+    def publish(self, topic: str, payload: str, qos: int = 2, retain: bool = False) -> None:
         logger.debug("New message ready to send on topic [%s]: %s" % (topic, payload))
         self._client.publish(self._complete_topic(topic), payload, qos=qos, retain=retain)
 
-    def publish_data(self, topic: str, payload: dict, qos: int = 1, retain: bool = False) -> None:
+    def publish_data(self, topic: str, payload: dict, qos: int = 2, retain: bool = False) -> None:
         self.publish(topic, json.dumps(payload), qos=qos, retain=retain)
 
     def connect(self, keep_alive: int = 60) -> None:

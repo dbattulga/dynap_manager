@@ -6,20 +6,22 @@ import datetime as dt
 
 def run_conf():
     with open('config/pipeline.yml') as f:
-        userconf = yaml.load(f)
+        userconf = yaml.safe_load(f)
     userjobs = []
+
     for userjob in userconf['jobs']:
         userjobs.append(userjob['job_name'])
-        print("post: "+userjob['job_name'])
+        print("posting: "+userjob['job_name'])
+        url = 'http://'+userjob['agent_address']
+        print("on: "+url)
 
-        url = userjob['agent_address']
-
-        body = {'pipeline_name': userjob['pipeline_name'],
+        body = {
+            'pipeline_name': userjob['pipeline_name'],
             'job_name': userjob['job_name'],
             'agent_address': userjob['agent_address'],
             'source_broker': userjob['source_broker'],
-            'sink_broker': userjob['sink_broker'],
             'source_topic': userjob['source_topic'],
+            'sink_broker': userjob['sink_broker'],
             'sink_topic': userjob['sink_topic'],
             'entry_class': userjob['entry_class']
             }

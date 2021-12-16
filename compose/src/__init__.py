@@ -20,12 +20,10 @@ from . import net_graph
 from bokeh.embed import components
 
 
-
 logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 api = Api(app)
 log = create_logger(app)
-
 
 @app.route("/")
 def index():
@@ -34,30 +32,35 @@ def index():
         content = markdown_file.read()
         return markdown.markdown(content)
 
-
 @app.route('/status', methods=['GET'])
 def stat_request():
     #ipaddr = '10.188.166.98'
-    ipaddr = '131.254.161.252'
-    res = requests.get("http://"+ipaddr+":5001/stat_response")
-    if res.status_code == 200:
-        log.debug(res)
-        log.debug(res.headers)
-        log.debug(res.content)
-        log.debug(res.status_code)
-        #log.debug(res.content['data'])
-        jason = json.loads(res.content)
-        log.debug(jason['data'])
+    #ipaddr = '131.254.161.252'
+    with open(os.path.dirname(app.root_path) + '/config/iplist.txt', 'r') as iplist:
+        lines = iplist.readlines()
 
-        headings = ('jobname', 'node', 'status')
-        data = (
-            ('job A', 'node X', 'running'),
-            ('job B', 'node Y', 'waiting'),
-            ('job C', 'node Z', 'running'),
-            ('job A', 'node X', 'running'),
-            ('job B', 'node Y', 'waiting'),
-            ('job C', 'node Z', 'running')
-        )
+    for line in lines:
+        log.debug(line)
+        #res = requests.get("http://"+ipaddr+":5001/stat_response")
+        res = requests.get(line+":5001/stat_response")
+        if res.status_code == 200:
+            log.debug(res)
+            log.debug(res.headers)
+            log.debug(res.content)
+            log.debug(res.status_code)
+            #log.debug(res.content['data'])
+            jason = json.loads(res.content)
+            log.debug(jason['data'])
+
+            headings = ('jobname', 'node', 'status')
+            data = (
+                ('job A', 'node X', 'running'),
+                ('job B', 'node Y', 'waiting'),
+                ('job C', 'node Z', 'running'),
+                ('job A', 'node X', 'running'),
+                ('job B', 'node Y', 'waiting'),
+                ('job C', 'node Z', 'running')
+            )
         
         return render_template('table.html', headings=headings, data=data)
 
@@ -73,16 +76,20 @@ def draw_graph():
     return render_template("graph.html", script=script, div=div)
 
 
-#def test_job():
-#    log.debug("I'm fencing")
-
-
+@app.route('/test', methods=['GET'])
 def test_job():
     with open(os.path.dirname(app.root_path) + '/config/iplist.txt', 'r') as iplist:
         lines = iplist.readlines()
-    
-    for line in lines:
-        log.debug(line)
+    for host in lines:
+        log.debug(host)
+        response = requests.get(host+":5001/stat_response")
+        if response.status_code == 200:
+            log.debug(response)
+            log.debug(response.headers)
+            log.debug(response.content)
+            log.debug(response.status_code)
+            jason = json.loads(response.content)
+            log.debug(jason['data'])
 
 
 #scheduler = BackgroundScheduler()
