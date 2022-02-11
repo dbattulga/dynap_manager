@@ -4,7 +4,7 @@ import random
 import time
 
 
-mqttph = MqttPublishHandler('192.168.1.8', 'data-generator', 'test', 'test')
+mqttph = MqttPublishHandler('petitprince-15.luxembourg.grid5000.fr', 'data-generator', 'test', 'test')
 mqttph.connect()
 
 number = 0
