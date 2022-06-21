@@ -1,8 +1,0 @@
-Flask==1.1.2
-flask-restful==0.3.8
-markdown==3.2.1
-requests==2.23.0
-Flask-APScheduler==1.12.2
-bokeh==2.0.2
-networkx==2.4
-matplotlib==3.2.1
