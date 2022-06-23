@@ -1,8 +1,17 @@
-# Flink Pipeline Composer API
+# Pipeline composer test repo
 
-* submit a pipeline of jobs to underlying agents
-* submit additional jobs to a pipeline
-* delete a pipeline
-* delete a job from a pipeline
+## Usage
 
-* if node connects/disconnects, update routing table between agents (agents does not have a neighbor discovery atm)
+### Deploy Dynap and reserve number of nodes
+* virtualenv -p python3 venv
+* source venv/bin/activate
+* pip install -U pip
+* pip install enoslib
+* python g5k_conf.py
+
+### Copy the list of nodes into a list
+
+### Start source/sink monitoring script
+### Start experiment.py script
+* Experiment script should run the loop with periodically triggering random number of jobs from some nodes
+

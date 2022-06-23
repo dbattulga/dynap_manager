@@ -85,7 +85,7 @@ class MqttHandler(object):
 
 class MqttPublishHandler(MqttHandler):
 
-    def publish(self, topic: str, payload: str, qos: int = 2, retain: bool = False) -> None:
+    def publish(self, topic: str, payload: str, qos: int = 1, retain: bool = False) -> None:
         logger.debug("New message ready to send on topic [%s]: %s" % (topic, payload))
         self._client.publish(self._complete_topic(topic), payload, qos=qos, retain=retain)
 
@@ -127,6 +127,7 @@ class MqttSubscriptionHandler(MqttHandler):
     def listen(self):
         logger.info("Starting listening...")
         self._client.loop_forever()
+        #self._client.loop_start()
 
     def add_subscription(self, topic, qos=1):
         logger.debug("Adding topic [%s] to list of subscriptions with qos=%d" % (topic, qos))
@@ -135,3 +136,7 @@ class MqttSubscriptionHandler(MqttHandler):
     def _on_message(self, client, user_data, msg):
         logger.debug("New message: client [%s], user_data [%s], topic [%s], payload [%s]" % (client, user_data, msg.topic, str(msg.payload)))
         self._on_message_f(msg.payload)
+
+    def _on_disconnect(self, client, userdata, rc):
+        logger.info(f"Client {client} disconnected ok")
+        client.loop_stop()

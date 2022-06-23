@@ -1,0 +1,3 @@
+{
+  "nodes": [{"role": "start", "host": "parasilo-18.rennes.grid5000.fr"}, {"role": "end", "host": "parasilo-19.rennes.grid5000.fr"}, {"role": "10", "host": "parasilo-2.rennes.grid5000.fr"}, {"role": "20", "host": "parasilo-23.rennes.grid5000.fr"}, {"role": "30", "host": "parasilo-24.rennes.grid5000.fr"}, {"role": "40", "host": "parasilo-25.rennes.grid5000.fr"}, {"role": "50", "host": "parasilo-26.rennes.grid5000.fr"}, {"role": "60", "host": "parasilo-27.rennes.grid5000.fr"}, {"role": "70", "host": "parasilo-28.rennes.grid5000.fr"}, {"role": "80", "host": "parasilo-3.rennes.grid5000.fr"}, {"role": "90", "host": "parasilo-4.rennes.grid5000.fr"}, {"role": "100", "host": "parasilo-5.rennes.grid5000.fr"}]
+}
