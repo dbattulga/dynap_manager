@@ -114,37 +114,36 @@ def main():
     start_time = time.time()
     end_time = start_time + test_duration
 
-    # while True:
-    #     next_run = random.randint(next_migration_duration_from, next_migration_duration_to)
-    #     print(f"next run will be in {next_run} seconds")
-    #     time.sleep(next_run)
-    #
-    #     migration_data = prepare_migration(eligible_nodes, 1)
-    #     if len(migration_data):
-    #         print(migration_data)
-    #         ts1 = time.time()
-    #         migrate(migration_data)
-    #         ts2 = time.time()
-    #         timestamps = [str(ts1), str(ts2)]
-    #         writer.writerow(timestamps)
-    #     else:
-    #         print("no eligible node is chosen")
-    #
-    #     if time.time() > end_time:
-    #         print(f"{test_duration} seconds is ended")
-    #         break
+    while True:
+        next_run = random.randint(next_migration_duration_from, next_migration_duration_to)
+        print(f"next run will be in {next_run} seconds")
+        time.sleep(next_run)
 
+        migration_data = prepare_migration(eligible_nodes, 1)
+        if len(migration_data):
+            print(migration_data)
+            ts1 = time.time()
+            migrate(migration_data)
+            ts2 = time.time()
+            timestamps = [str(ts1), str(ts2)]
+            writer.writerow(timestamps)
+        else:
+            print("no eligible node is chosen")
 
-    migration_data = prepare_migration(eligible_nodes, 1)
-    if len(migration_data):
-        print(migration_data)
-        ts1 = time.time()
-        migrate(migration_data)
-        ts2 = time.time()
-        timestamps = [str(ts1), str(ts2)]
-        writer.writerow(timestamps)
-    else:
-        print("no eligible node is chosen")
+        if time.time() > end_time:
+            print(f"{test_duration} seconds is ended")
+            break
+
+    # migration_data = prepare_migration(eligible_nodes, 1)
+    # if len(migration_data):
+    #     print(migration_data)
+    #     ts1 = time.time()
+    #     migrate(migration_data)
+    #     ts2 = time.time()
+    #     timestamps = [str(ts1), str(ts2)]
+    #     writer.writerow(timestamps)
+    # else:
+    #     print("no eligible node is chosen")
 
 
 if __name__ == "__main__":
