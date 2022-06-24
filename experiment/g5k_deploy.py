@@ -23,7 +23,7 @@ conf = (
     en.G5kConf
     .from_settings(
         job_type="allow_classic_ssh",
-        job_name="OTestLatency",
+        job_name="STestLatency",
         walltime="01:00:00"
     )
     .add_network_conf(prod_network)
