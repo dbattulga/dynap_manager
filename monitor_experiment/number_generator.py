@@ -24,11 +24,11 @@ while True:
     ts = time.time()
     msg = str(ts) + ":" + str(number)
     mqttph.publish("T-1", msg, qos=1, retain=False)
-    print(number)
+    #print(number)
     # TODO change data generation rate
     # time.sleep(0.2)  # 5 data per second
     # time.sleep(0.3)  # 3 data per second
-    time.sleep(0.450)
+    time.sleep(0.480)
     # time.sleep(0.5)  # 2 data per second
     # time.sleep(0.45)
     # time.sleep(1)  # 1 data per second
