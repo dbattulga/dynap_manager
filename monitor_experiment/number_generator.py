@@ -28,7 +28,7 @@ while True:
     # TODO change data generation rate
     # time.sleep(0.2)  # 5 data per second
     # time.sleep(0.3)  # 3 data per second
-    time.sleep(0.4)
+    time.sleep(0.48)
     # time.sleep(0.5)  # 2 data per second
     # time.sleep(0.45)
     # time.sleep(1)  # 1 data per second
