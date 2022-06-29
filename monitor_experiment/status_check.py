@@ -29,7 +29,7 @@ def on_message(msg):
     msg1 += ":" + str(time1)
     split_text = re.split(':', msg1)
     writer.writerow(split_text)
-    # print(msg1)
+    print(msg1)
 
 # TODO change topic number accordingly
 print("status checker script is started")
